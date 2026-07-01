@@ -118,7 +118,7 @@ function App() {
           </div>
           <div className="data-card card-two">
             <span className="status-dot" />
-            AWS Logs
+            .NET C#
           </div>
           <div className="data-card card-three">
             <span className="status-dot" />
