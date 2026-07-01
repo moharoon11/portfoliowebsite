@@ -68,6 +68,24 @@ const stats = [
   ['AWS', 'S3 + DynamoDB'],
 ];
 
+const socialLinks = [
+  {
+    label: 'GitHub',
+    value: 'moharoon11',
+    href: 'https://github.com/moharoon11/',
+  },
+  {
+    label: 'LeetCode',
+    value: 'moharoon11107',
+    href: 'https://leetcode.com/u/moharoon11107/',
+  },
+  {
+    label: 'DSA Repo',
+    value: 'GitHub practice',
+    href: 'https://github.com/moharoon11/DSA-Preparation/',
+  },
+];
+
 function App() {
   return (
     <main className="portfolio-shell">
@@ -100,6 +118,19 @@ function App() {
               Call +91 93609 84799
             </a>
           </div>
+          <div className="profile-links" aria-label="Profile links">
+            {socialLinks.map((link) => (
+              <a
+                href={link.href}
+                key={link.label}
+                rel="noreferrer"
+                target="_blank"
+              >
+                <span>{link.label}</span>
+                <strong>{link.value}</strong>
+              </a>
+            ))}
+          </div>
           <div className="location-line">
             Madurai, Tamil Nadu - open to relocation
           </div>
@@ -128,12 +159,34 @@ function App() {
       </section>
 
       <section className="stats-grid" aria-label="Career highlights">
-        {stats.map(([value, label]) => (
-          <div className="stat-card" key={label}>
-            <strong>{value}</strong>
-            <span>{label}</span>
-          </div>
-        ))}
+        {stats.map(([value, label]) => {
+          const statContent = (
+            <>
+              <strong>{value}</strong>
+              <span>{label}</span>
+            </>
+          );
+
+          if (label === 'DSA problems') {
+            return (
+              <a
+                className="stat-card stat-link"
+                href="https://github.com/moharoon11/DSA-Preparation/"
+                key={label}
+                rel="noreferrer"
+                target="_blank"
+              >
+                {statContent}
+              </a>
+            );
+          }
+
+          return (
+            <div className="stat-card" key={label}>
+              {statContent}
+            </div>
+          );
+        })}
       </section>
 
       <section className="content-band">
@@ -241,6 +294,16 @@ function App() {
         <div className="contact-actions">
           <a href="mailto:moharoon11107@gmail.com">moharoon11107@gmail.com</a>
           <a href="tel:+919360984799">+91 93609 84799</a>
+          {socialLinks.map((link) => (
+            <a
+              href={link.href}
+              key={link.label}
+              rel="noreferrer"
+              target="_blank"
+            >
+              {link.label}
+            </a>
+          ))}
         </div>
       </section>
     </main>
